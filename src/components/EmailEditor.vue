@@ -21,6 +21,10 @@ export default {
     tools: Object,
     appearance: Object,
     locale: String,
+    previewCallback: {
+      type: Function,
+      required: false,
+    },
     displayMode: {
       type: String,
       required: false,
@@ -69,6 +73,9 @@ export default {
           version: pkg.version,
         },
       });
+
+      if (this.previewCallback)
+        unlayer.registerCallback('previewHtml', this.previewCallback);
 
       this.$emit('load');
 
