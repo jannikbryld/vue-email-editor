@@ -76,7 +76,7 @@ export default {
         this.$emit('ready');
       });
     },
-    registerPreviewCallaback(callback) {
+    registerPreviewCallback(callback) {
       console.log('Registering previewHtml callback', callback);
       unlayer.registerCallback('previewHtml', callback);
     },
