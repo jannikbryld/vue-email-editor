@@ -21,14 +21,6 @@ export default {
     tools: Object,
     appearance: Object,
     locale: String,
-    previewCallback: {
-      type: Function,
-      required: false,
-    },
-    selectImageCallback: {
-      type: Function,
-      required: false,
-    },
     displayMode: {
       type: String,
       required: false,
@@ -78,17 +70,19 @@ export default {
         },
       });
 
-      if (this.previewCallback)
-        unlayer.registerCallback('previewHtml', this.previewCallback);
-
-      if (this.selectImageCallback)
-        unlayer.registerCallback('selectImage', this.selectImageCallback);
-
       this.$emit('load');
 
       this.editor.addEventListener('editor:ready', () => {
         this.$emit('ready');
       });
+    },
+    registerPreviewCallaback(callback) {
+      console.log('Registering previewHtml callback', callback);
+      unlayer.registerCallback('previewHtml', callback);
+    },
+    registerSelectImageCallback(callback) {
+      console.log('Registering selectImage callback', callback);
+      unlayer.registerCallback('selectImage', callback);
     },
     loadDesign(design) {
       this.editor.loadDesign(design);
