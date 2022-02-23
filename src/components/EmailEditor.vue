@@ -76,14 +76,6 @@ export default {
         this.$emit('ready');
       });
     },
-    registerPreviewCallback(callback) {
-      console.log('Registering previewHtml callback', callback);
-      unlayer.registerCallback('previewHtml', callback);
-    },
-    registerSelectImageCallback(callback) {
-      console.log('Registering selectImage callback', callback);
-      unlayer.registerCallback('selectImage', callback);
-    },
     loadDesign(design) {
       this.editor.loadDesign(design);
     },
