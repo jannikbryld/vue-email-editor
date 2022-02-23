@@ -25,6 +25,10 @@ export default {
       type: Function,
       required: false,
     },
+    selectImageCallback: {
+      type: Function,
+      required: false,
+    },
     displayMode: {
       type: String,
       required: false,
@@ -76,6 +80,9 @@ export default {
 
       if (this.previewCallback)
         unlayer.registerCallback('previewHtml', this.previewCallback);
+
+      if (this.selectImageCallback)
+        unlayer.registerCallback('selectImage', this.selectImageCallback);
 
       this.$emit('load');
 
